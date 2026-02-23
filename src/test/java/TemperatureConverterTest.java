@@ -60,4 +60,19 @@ class TemperatureConverterTest {
         assertFalse(converter.isExtremeTemperature(24));
     }
 
+    // Tests for kelvinToCelsius
+    @Test
+    void testKelvinToCelsius_AbsoluteZero() {
+        assertEquals(-273.15, converter.kelvinToCelsius(0), 0.001);
+    }
+
+    @Test
+    void testKelvinToCelsius_RoomTemperature() {
+        assertEquals(22.85, converter.kelvinToCelsius(296), 0.001);
+    }
+
+    @Test
+    void testKelvinToCelsius_BoilingPoint() {
+        assertEquals(100, converter.kelvinToCelsius(373.15), 0.001);
+    }
 }
