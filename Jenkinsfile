@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/RZ-Metropolia/OTP1_inclass_assignment.git'
+                git branch: 'main', url: 'https://github.com/RZ-Metropolia/OTP1_inclass_assignment.git'
             }
         }
         stage('Build') {
