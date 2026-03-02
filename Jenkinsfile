@@ -31,18 +31,17 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                script {
-                    dockerImage = docker.build("${DOCKER_IMAGE}:${BUILD_NUMBER}")
-                }
+                sh "docker build -t ${DOCKER_IMAGE}:${BUILD_NUMBER} -t ${DOCKER_IMAGE}:latest ."
             }
         }
         stage('Push Docker Image') {
             steps {
-                script {
-                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-credentials') {
-                        dockerImage.push()
-                        dockerImage.push('latest')
-                    }
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKERHUB_USER', passwordVariable: 'DOCKERHUB_PASS')]) {
+                    sh '''
+                        echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USER" --password-stdin
+                        docker push "$DOCKER_IMAGE:$BUILD_NUMBER"
+                        docker push "$DOCKER_IMAGE:latest"
+                    '''
                 }
             }
         }
