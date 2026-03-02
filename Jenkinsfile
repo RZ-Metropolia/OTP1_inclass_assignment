@@ -31,7 +31,7 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh "docker build -t ${DOCKER_IMAGE}:${BUILD_NUMBER} -t ${DOCKER_IMAGE}:latest ."
+                sh "docker build --platform linux/amd64 -t ${DOCKER_IMAGE}:${BUILD_NUMBER} -t ${DOCKER_IMAGE}:latest ."
             }
         }
         stage('Push Docker Image') {
