@@ -21,6 +21,6 @@ FROM eclipse-temurin:21-jre
 WORKDIR /app
 
 # Copy the built JAR from the build stage
-COPY --platform linux/amd64 --from=build /app/target/OTP1_inclass_assignment-1.0-SNAPSHOT.jar app.jar
+COPY --from=build /app/target/OTP1_inclass_assignment-1.0-SNAPSHOT.jar app.jar
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
