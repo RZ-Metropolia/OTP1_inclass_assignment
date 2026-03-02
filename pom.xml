@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
@@ -33,6 +35,18 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.1</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.9</version>
@@ -55,14 +69,14 @@
                         <exclude>sun/util/resources/**</exclude>
                         <exclude>sun/text/resources/**</exclude>
                         <exclude>sun/util/cldr/**</exclude>
-                        <exclude>sun/util/resources/provider/LocaleDataProvider</exclude>
-                        <exclude>sun/text/resources/cldr/ext/FormatData_fi</exclude>
+                        <exclude
+                        >sun/util/resources/provider/LocaleDataProvider</exclude>
+                        <exclude
+                        >sun/text/resources/cldr/ext/FormatData_fi</exclude>
                     </excludes>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
-
 
 </project>
